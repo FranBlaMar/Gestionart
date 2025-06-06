@@ -20,7 +20,7 @@
   position: absolute;
   top: 16px;
   left: 24px;
-  font-size: 17px;
+  font-size: 17px !important;
   font-weight: 600;
   color: #ffffff;
   cursor: pointer;
@@ -204,10 +204,6 @@
   
   .contenido-principal {
     padding: 12px;
-  }
-  
-  .app-nombre span {
-    font-size: 1.6rem;
   }
   
   .titulo-ganancias {
