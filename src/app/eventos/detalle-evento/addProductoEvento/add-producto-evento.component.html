@@ -1,0 +1,118 @@
+<div class="select-container">
+
+  <div class="app-nombre" (click)="irAInicio()">
+    <span>Gestionart</span>
+  </div>
+
+  <!-- Título -->
+  <h3 class="titulo-selector">Agregar Productos al Evento</h3>
+
+  <!-- Buscador de productos -->
+  <div class="buscador-container" id="buscador">
+    <mat-form-field appearance="fill" class="buscador-field">
+      <mat-label>Buscar productos</mat-label>
+      <input matInput [(ngModel)]="terminoBusqueda" (ngModelChange)="filtrarProductos()"
+        placeholder="Escribe el nombre del producto..." class="buscador-input">
+      <svg matSuffix class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+      </svg>
+    </mat-form-field>
+
+    <!-- Botón para scroll al resumen -->
+    <button class="scroll-flecha" *ngIf="productosEvento.length > 0" title="Ir al resumen" (click)="scrollToResumen()">
+      <svg class="flecha-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+        <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    
+
+  </div>
+
+  <!-- Contador de productos -->
+  <div class="contador-productos" *ngIf="terminoBusqueda">
+    <span>{{ productosFiltrados.length }} de {{ productosListaSeleccion.length }} productos</span>
+  </div>
+
+  <!-- Lista de tarjetas -->
+  <div class="productos-container">
+    <div *ngFor="let producto of productosFiltrados" class="producto-card">
+
+      <!-- Header de la tarjeta -->
+      <div class="producto-header">
+        <mat-checkbox [(ngModel)]="producto.seleccionado" (change)="toggleProducto(producto)" class="producto-checkbox">
+        </mat-checkbox>
+        <div class="producto-info">
+          <h4 class="producto-nombre">{{ producto.nombre }}</h4>
+          <span class="producto-precio">{{ producto.precio }}€</span>
+        </div>
+      </div>
+
+      <!-- Controles (solo visible si está seleccionado) -->
+      <div *ngIf="producto.seleccionado" class="producto-controles">
+
+        <!-- Cantidad -->
+        <div class="control-group">
+          <label class="control-label">Cantidad:</label>
+          <mat-form-field appearance="outline" class="cantidad-input-mobile">
+            <input matInput type="number" [(ngModel)]="producto.cantidadEvento" min="1"
+              (ngModelChange)="actualizarProductoEvento(producto)">
+          </mat-form-field>
+        </div>
+
+        <!-- Muestra -->
+        <div class="control-group">
+          <label class="control-label">¿Se vende el de muestra?</label>
+          <mat-radio-group [(ngModel)]="producto.venderMuestra" (ngModelChange)="actualizarProductoEvento(producto)"
+            class="radio-group-mobile">
+            <mat-radio-button [value]="false" class="radio-mobile">No</mat-radio-button>
+            <mat-radio-button [value]="true" class="radio-mobile">Sí</mat-radio-button>
+          </mat-radio-group>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mensaje cuando no hay productos que coincidan -->
+    <div *ngIf="productosFiltrados.length === 0 && terminoBusqueda" class="no-productos">
+      <svg class="no-productos-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <path d="m21 21-4.35-4.35"></path>
+        <line x1="9" y1="9" x2="13" y2="13"></line>
+        <line x1="13" y1="9" x2="9" y2="13"></line>
+
+      </svg>
+      <p>No se encontraron productos que coincidan con "{{ terminoBusqueda }}"</p>
+    </div>
+  </div>
+
+  <!-- Resumen de productos seleccionados -->
+  <div *ngIf="productosEvento.length > 0" class="resumen-container" id="resumen">
+    <h4>Productos Seleccionados ({{ productosEvento.length }})</h4>
+    <div class="resumen-lista">
+      <div *ngFor="let producto of productosEvento" class="resumen-item">
+        <div class="resumen-info">
+          <span class="resumen-nombre">{{ producto.nombre }}</span>
+          <div class="resumen-detalles">
+            <span>{{ producto.precio }}€</span>
+            <span>Cantidad: {{ producto.stock }}</span>
+            <span *ngIf="producto.venderMuestra" class="muestra-badge">MUESTRA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Botón Guardar -->
+  <div class="guardar-container" *ngIf="productosEvento.length > 0">
+    <button mat-raised-button color="primary" class="guardar-btn" (click)="guardarProductosEvento()">
+      Guardar Productos
+    </button>
+    <button class="scroll-flecha" *ngIf="productosEvento.length > 0" title="Ir al resumen" (click)="scrollToBusqueda()">
+      <svg class="flecha-icon" viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2">
+        <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+    
+  </div>
+
+</div>

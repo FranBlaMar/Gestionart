@@ -1,0 +1,174 @@
+.productos{
+  position: relative;
+  min-height: 100vh;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  background-image: url('../../assets/f.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  background-attachment: fixed;
+  color: white;
+  text-align: center;
+  justify-content: flex-start; 
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-button {
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #ffffffda;
+  border: none;
+  width: 80%;
+  backdrop-filter: blur(300px);
+  margin-top: 10px;
+  border-radius: 6px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #f0e0c9;
+}
+
+/* Lista de productos */
+.productos-lista {
+  width: 100%;
+  padding: 16px;
+}
+
+/* Tarjeta de producto */
+.producto-card {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #82a3b9fc, #d3bfac);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.producto-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+}
+
+.editar-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+}
+
+/* Info del producto ocupa más espacio */
+.producto-card .info {
+  flex-grow: 1;
+}
+
+.sin-stock{
+  border: 2px solid red;
+}
+
+.out-stock{
+  color: red !important;
+  font-weight: bolder !important;
+  font-size: 17px !important;
+}
+
+.vendido-cruz{
+  color: red;
+  font-size: 20px;
+}
+
+/* Texto de info */
+.producto-card .info h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #222;
+}
+
+
+.producto-card .info p {
+  margin: 4px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Botón Vender más pequeño y pegado a la derecha */
+.vender-button {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  font-size: 13px;
+  background: linear-gradient(135deg, #c9da5d, #59b58f);    
+  color: rgb(0, 0, 0); 
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.vender-button:hover {
+  background-color: #388e3c;
+}
+
+.contenido{
+  margin-top: 35px;
+}
+
+.buscador-productos {
+  width: 100%;
+  padding: 0.5rem 0.9rem;
+  font-size: 1.1rem;
+  border: none;
+  border-bottom: 2px solid #ffa200;
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: 'Outfit', sans-serif;
+  background: rgba(255, 255, 255, 0.691);
+  border-radius: 5px;
+}
+
+.buscador-productos::placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+/* Branding de la app */
+.app-nombre {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 10;
+  text-transform: uppercase;
+  
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.app-nombre:hover {
+  transform: scale(1.05);
+  color: #fff;
+}

@@ -1,0 +1,56 @@
+<div class="eventos-container" *ngIf="evento">
+  <div class="app-nombre" (click)="irAInicio()">
+    <span>Gestionart</span>
+  </div>
+  <div class="titulo-container" style="display: flex; align-items: center;">
+    <svg
+      (click)="volver()"
+      xmlns="http://www.w3.org/2000/svg"
+      width="30"
+      height="24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      style="cursor: pointer; margin-right: 16px; margin-left: -10%;"
+    >
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+    <h1 class="titulo" style="margin: 0;">
+      Estadisticas
+    </h1>
+  </div>
+  
+  <h5 class="titulo2">{{evento.nombre}} - {{evento.fecha}}</h5>
+
+  <div class="contenido-principal">
+    <h2 class="titulo-ganancias">Ganancias totales: {{ calcularGananciasTotales() }} €</h2>
+
+    <div class="grafica-container">
+      <h3 class="subtitulo">Top 5 Beneficios</h3>
+      <div class="grafica-scroll">
+        <div *ngFor="let producto of productosEventoOrdenados" class="barra-container">
+          <div class="barra-info">
+            <span class="producto-nombre">{{ producto.nombre }}</span>
+            <span class="producto-ganancia">{{ producto.ganancias }}€</span>
+          </div>
+          <div class="barra" [style.width.%]="(producto.ganancias / maxGanancia) * 100"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lista-container">
+      <h3 class="subtitulo">Lista detallada de productos</h3>
+
+      <input type="text" placeholder="Buscar producto..." [(ngModel)]="filtroBusqueda" />
+
+      <ul class="lista-ganancias">
+        <li *ngFor="let producto of productosFiltrados()" class="lista-item">
+          <span class="item-nombre">{{ producto.nombre }}</span>
+          <span class="item-ganancia">{{ producto.ganancias }} €</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,227 @@
+
+.detalles-evento {
+    min-height: 100vh;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../../assets/f.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    justify-content: flex-start; 
+    background-attachment: fixed; 
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .titulo{
+    margin-top: 40px;
+    margin-bottom: 10px;
+  }
+  .edit-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    float: right;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+    margin-right: 10px;
+  }
+
+  .evento-header {
+    width: 100%;
+    padding: 16px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.253);
+    backdrop-filter: blur(9000px);
+    border-radius: 15px;
+    color: white;
+    text-align: left;
+  }
+  
+  /* Contenedor superior con nombre y botón */
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Nombre del evento */
+  .evento-header h1 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  /* Fecha del evento */
+  .fecha-evento {
+    font-size: 14px;
+    margin-top: 4px;
+    color: #f0f0f0;
+  }
+  
+  /* Botón más pequeño y a la derecha */
+  .add-button {
+    padding: 6px 12px;
+    margin-top: 13px;
+    font-size: 14px;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #f0e0c9;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+  
+    cursor: pointer;
+    margin-left: 90px;
+    padding: 0;
+    color: #bf1c1c; /* tono rojo elegante */
+    transition: transform 0.2s ease;
+  }
+
+  .icon-button-stats {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255);
+    padding-top: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+  }
+  
+  .icon-button-stats:hover {
+    transform: scale(1.1);
+  }
+  
+  .icon-button:hover {
+    transform: scale(1.1);
+  }
+
+/* Lista de productos */
+.productos-lista {
+    width: 100%;
+    padding: 16px;
+  }
+  
+ /* Tarjeta de producto */
+.producto-card {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #b7ccf2fc, #d8ab90);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Info del producto ocupa más espacio */
+  .producto-card .info {
+    flex-grow: 1;
+  }
+
+  .sin-stock{
+    border: 2px solid red;
+  }
+
+  .out-stock{
+    color: red !important;
+    font-weight: bolder !important;
+    font-size: 17px !important;
+  }
+  
+  .vendido-cruz{
+    color: red;
+    font-size: 20px;
+  }
+
+  /* Texto de info */
+  .producto-card .info h3 {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #222;
+  }
+
+  
+  .producto-card .info p {
+    margin: 4px 0;
+    font-size: 16px;
+    color: #131313;
+  }
+
+  /* Botón Vender más pequeño y pegado a la derecha */
+  .vender-button {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    font-size: 13px;
+    background:  #f7f7f747;
+    backdrop-filter: blur(20px);
+    color: rgb(0, 0, 0); 
+    border: 2px solid rgba(0, 0, 0, 0.385);
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 12px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .vender-button:hover {
+    background-color: #388e3c;
+  }
+
+
+
+  .buscador-productos {
+    width: 100%;
+    padding: 0.5rem 0.9rem;
+    font-size: 1.1rem;
+    border: none;
+    border-bottom: 2px solid #000000;
+    outline: none;
+    transition: border-color 0.3s;
+    font-family: 'Outfit', sans-serif;
+    background: rgba(255, 255, 255, 0.691);
+    border-radius: 5px;
+  }
+  
+  .buscador-productos::placeholder {
+    color: #000000;
+    opacity: 1;
+}
+
+.app-nombre {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 10;
+  text-transform: uppercase;
+  
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.app-nombre:hover {
+  transform: scale(1.05);
+  color: #fff;
+}

@@ -1,0 +1,17 @@
+<div class="inicio-container">
+  <img src="assets/nube.webp" alt="Nube" class="nube" />
+  <h1>Gestionart</h1>
+  <div class="scroll-arrow">&#x25BC;</div>
+</div>
+
+<div class="menu">
+  <div class="menu-items">
+    <button class="menu-item" (click)="nuevoEvento()">Nuevo evento</button>
+    <div class="menu-separator"></div>
+    <button class="menu-item" (click)="listaEventos()">Lista de eventos</button>
+    <div class="menu-separator"></div>
+    <button class="menu-item" (click)="gestionarProductos()">Gestionar Productos</button>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

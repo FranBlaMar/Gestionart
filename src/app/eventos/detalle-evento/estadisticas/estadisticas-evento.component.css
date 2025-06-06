@@ -1,0 +1,266 @@
+.eventos-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url('../../../../assets/f.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.app-nombre {
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  z-index: 10;
+  text-transform: uppercase;
+  
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.app-nombre:hover {
+  transform: scale(1.05);
+  color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* CSS Optimizado para Móvil */
+
+.contenido-principal {
+  min-height: 70vh;
+  min-width: 80vw;
+  margin: 0;
+  background: rgba(255, 255, 255, 0.109);
+  backdrop-filter: blur(30px);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.titulo-ganancias {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  padding: 10px;
+  background: linear-gradient(135deg, #b7c1ee 0%, #f3dcab 100%);
+  color: rgb(40, 135, 56);
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.subtitulo {
+  color: #34495e;
+  font-size: 1rem;
+  margin-bottom: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.grafica-container {
+  margin-bottom: 20px;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.grafica-scroll {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px 0;
+}
+
+.barra-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.barra-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  margin-bottom: 3px;
+  font-size: 0.9rem;
+}
+
+.producto-nombre {
+  color: #2c3e50;
+  font-size: 0.9rem;
+  flex: 1;
+  padding-right: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.producto-ganancia {
+  color: #27ae60;
+  font-weight: bold;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.barra {
+  height: 20px;
+  background: linear-gradient(90deg, #4caf50 0%, #45a049 100%);
+  border-radius: 10px;
+  min-width: 2px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 2px rgba(76, 175, 80, 0.3);
+}
+
+.lista-container {
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  border: 1px solid #e9ecef;
+}
+
+.lista-ganancias {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lista-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  background: white;
+  border-radius: 4px;
+  border-left: 3px solid #4caf50;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.lista-item:hover {
+  transform: translateX(2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.lista-item:last-child {
+  margin-bottom: 0;
+}
+
+.item-nombre {
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 0.9rem;
+  flex: 1;
+  padding-right: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-ganancia {
+  color: #27ae60;
+  font-weight: bold;
+  font-size: 0.9rem;
+  background: #e8f5e8;
+  padding: 3px 8px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+/* Estilos específicos para móvil */
+@media (max-width: 480px) {
+  .eventos-container {
+    padding: 8px;
+  }
+  
+  .contenido-principal {
+    padding: 12px;
+  }
+  
+  .app-nombre span {
+    font-size: 1.6rem;
+  }
+  
+  .titulo-ganancias {
+    font-size: 1.1rem;
+    padding: 8px;
+  }
+  
+  .subtitulo {
+    font-size: 0.9rem;
+  }
+  
+  .grafica-container, .lista-container {
+    padding: 10px;
+  }
+  
+  .barra-container {
+    padding: 6px;
+  }
+  
+  .lista-item {
+    padding: 8px 10px;
+  }
+}
+
+.titulo-container{
+  margin-top: 5rem;
+}
+.titulo{
+  margin-top: 4rem;
+}
+.titulo2{
+  margin-top: 0rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 8px 4px;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.023);
+  backdrop-filter: blur(8px);
+  border: none;
+  border-bottom: 2px solid #ccc;
+  color: #000000;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+  color: #5b5959;
+  opacity: 1;
+}
+
+input[type="text"]:focus {
+  border-bottom-color: #000000;
+}

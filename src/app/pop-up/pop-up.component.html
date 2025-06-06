@@ -1,0 +1,55 @@
+<div class="modal-backdrop">
+  <div class="modal-container" *ngIf="modo != 'AddProductoEvento'">
+    <div class="modal-content">
+      <h2 *ngIf="modo == 'EditarProductoLista' || modo == 'EditarProductoEvento'">
+        Editar producto
+        <button class="icon-button" (click)="borrarProducto()" title="Borrar producto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+            <path d="M10 11v6"></path>
+            <path d="M14 11v6"></path>
+            <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+          </svg>
+        </button>
+      </h2>
+      <h2 *ngIf="modo == 'AddProductoLista'">Añadir producto</h2>
+      <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" [(ngModel)]="productoEditar.nombre" />
+      </div>
+      <div class="form-group">
+        <label>Precio (€):</label>
+        <input type="number" [(ngModel)]="productoEditar.precio" />
+      </div>
+      <div class="form-group" *ngIf="modo == 'EditarProductoEvento'">
+        <label>Stock:</label>
+        <input type="number" [(ngModel)]="productoEditar.stock" />
+      </div>
+      <div class="form-group" *ngIf="modo == 'EditarProductoEvento'">
+        <label>Vendidos:</label>
+        <input type="number" [(ngModel)]="productoEditar.vendidos" />
+      </div>
+      <div class="actions">
+        <button class="btn cancel" (click)="cerrar()">Cancelar</button>
+        <button class="btn save" (click)="guardarProductoEditado()"
+          *ngIf="modo == 'EditarProductoLista' || modo == 'EditarProductoEvento'">Guardar</button>
+        <button class="btn save" (click)="guardarProductoNuevo()" *ngIf="modo == 'AddProductoLista'">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+<!-- POPUP -->
+<ng-template #confirmacionBorrado>
+  <div class="dialog-outfit-font">
+    <h2 mat-dialog-title>¿Confirmar borrado?</h2>
+    <mat-dialog-content>
+      ¿Estás seguro de que quieres borrar este producto?
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <button mat-button color="warn" (click)="confirmarBorrado()">Borrar</button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>

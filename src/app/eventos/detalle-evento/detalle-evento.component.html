@@ -1,0 +1,120 @@
+<!-- detalle-evento.component.html -->
+<div class="detalles-evento" *ngIf="evento">
+  <div class="app-nombre" (click)="irAInicio()">
+    <span>Gestionart</span>
+  </div>
+  <h1 class="titulo" *ngIf="modoEdicion"> Edición evento</h1>
+  <h1 class="titulo" *ngIf="!modoEdicion"> Ventas evento</h1>
+  <div class="evento-header">
+    <div class="header-top" style="display: flex; align-items: center; justify-content: space-between;">
+      <h1 style="margin: 0;">{{ evento.nombre }}</h1>
+  
+      <div style="display: flex; gap: 10px;">
+        <!-- Botón de estadísticas (diagrama de barras) -->
+        <button class="icon-button-stats" (click)="verEstadisticas()" title="Ver estadísticas" *ngIf="!modoEdicion">
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               viewBox="0 0 24 24">
+            <path d="M3 12h3v8H3zM9 8h3v12H9zM15 4h3v16h-3z" />
+          </svg>
+        </button>
+        
+  
+        <!-- Botón de borrar evento -->
+        <button class="icon-button" (click)="borrarEvento()" title="Borrar evento" *ngIf="modoEdicion">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none"
+               stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+               viewBox="0 0 24 24">
+            <polyline points="3 6 5 6 21 6"></polyline>
+            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path>
+            <path d="M10 11v6"></path>
+            <path d="M14 11v6"></path>
+            <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  
+    <p *ngIf="evento.fecha" class="fecha-evento">
+      📅 {{ evento.fecha | date:'dd \'de\' MMMM \'de\' y' }}
+    </p>
+  
+    <button class="add-button" (click)="abrirAgregarProducto()" *ngIf="modoEdicion">+ Productos</button>
+  </div>
+  
+
+  <div >
+    <input
+      type="text"
+      class="buscador-productos"
+      placeholder="Buscar producto por nombre"
+      [(ngModel)]="terminoBusqueda"
+      (input)="filtrarProductos()"
+    />
+  </div>
+
+  <div class="productos-lista">
+    
+    <div class="producto-card"
+         *ngFor="let producto of productosEventoFiltrados" [ngClass]="{ 'sin-stock': producto.stock == 0 }">
+      <div class="info" >
+        <h3 >{{ producto.nombre }}</h3>
+        <p> Precio: {{producto.precio}}€</p>
+        <p>Muestra: {{ producto.venderMuestra ? 'Si' : 'No' }}</p>
+        <p>Vendidos: {{ producto.vendidos }}</p>
+        
+        <p *ngIf="producto.stock > 0 && !(producto.stock == 1 && producto.venderMuestra)">Stock: {{ producto.stock }}</p>
+        <p *ngIf="producto.stock == 0" class="out-stock">Sin Stock</p>
+        <p *ngIf="producto.stock == 1 && producto.venderMuestra" class="out-stock">Ultimo stock el de muestra</p>
+        
+      </div>
+      
+      <button class="vender-button" (click)="abrirModalVender(producto)" *ngIf="producto.stock > 0 && !modoEdicion">Vender</button>
+      <p class="vendido-cruz" *ngIf="producto.stock == 0 && !modoEdicion" >X</p>
+      <button *ngIf="modoEdicion" class="edit-icon" title="Editar producto" (click)="editarProducto(producto)">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+          <path d="M12 20h9" />
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+        </svg>
+      </button>
+    </div>
+    
+  </div>
+</div>
+
+
+<ng-template #confirmacionBorrado>
+  <div class="dialog-outfit-font">
+    <h2 mat-dialog-title>¿Confirmar borrado?</h2>
+    <mat-dialog-content>
+      ¿Estás seguro de que quieres borrar este evento?
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <button mat-button color="warn" (click)="confirmarBorrado()">Borrar</button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>
+
+
+
+<ng-template #confirmacionVenta>
+  <div class="venta-dialog-container">
+    <h2 mat-dialog-title class="venta-titulo">¿Confirmar venta?</h2>
+
+    <mat-dialog-content class="venta-contenido">
+      <p>Se va a realizar una venta.</p>
+      <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-label>Cantidad vendida</mat-label>
+        <input matInput type="number" [(ngModel)]="cantidad" min="1">
+      </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end" class="venta-acciones">
+      <button mat-button mat-dialog-close>Cancelar</button>
+      <button mat-button color="primary" (click)="confirmarVenta()">Vender</button>
+    </mat-dialog-actions>
+  </div>
+</ng-template>
+
+

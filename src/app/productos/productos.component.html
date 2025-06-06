@@ -1,0 +1,33 @@
+<div class="productos">
+  <div class="capa"></div> 
+  <div class="app-nombre" (click)="irAInicio()">
+    <span>Gestionart</span>
+  </div>
+  
+  <div class="contenido">
+    <h1>Lista de productos</h1>
+    <div>
+      <input type="text" class="buscador-productos" placeholder="Buscar producto por nombre"
+        [(ngModel)]="terminoBusqueda" (input)="filtrarProductos()" />
+    </div>
+
+    <button class="add-button" (click)="abrirDialogoAdd()">+ Productos</button>
+
+    <div class="productos-lista" *ngIf="productosFiltrados">
+      <div class="producto-card" *ngFor="let producto of productosFiltrados">
+        <div class="info">
+          <h3>{{ producto.nombre }}</h3>
+          <p>Precio: {{ producto.precio }}€</p>
+        </div>
+        
+        <button class="editar-btn" (click)="abrirDialogoEditar(producto)" aria-label="Editar">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M12 20h9" />
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
